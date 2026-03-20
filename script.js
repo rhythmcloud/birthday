@@ -82,11 +82,11 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
 });
 
 // ========== 5. TYPING ANIMATION (Message Section) ==========
-const birthdayMessage = `Happy Birthday Chanchal! 🎉🎂💖<br>
+const birthdayMessage = `Happy Birthday Chanchal! 🎉🎂💖`
 
-On your special day, I just want to remind you how truly amazing you are and how lucky I feel to have you as my best friend. You bring so much happiness, laughter, and positivity into my life, and I honestly can’t imagine my life without you ✨😊<br>
-Thank you for always being there for me, for understanding me like no one else, and for making every moment we share so special 💕🌸 You deserve all the love, success, and happiness in the world today and always 🌟💫<br>
-May this year bring you closer to your dreams and fill your life with beautiful memories 🥳🌈 Keep shining, keep smiling, and never change—you’re perfect just the way you are 💛✨`;
+`On your special day, I just want to remind you how truly amazing you are and how lucky I feel to have you as my best friend. You bring so much happiness, laughter, and positivity into my life, and I honestly can’t imagine my life without you ✨😊`
+`Thank you for always being there for me, for understanding me like no one else, and for making every moment we share so special 💕🌸 You deserve all the love, success, and happiness in the world today and always 🌟💫`
+`May this year bring you closer to your dreams and fill your life with beautiful memories 🥳🌈 Keep shining, keep smiling, and never change—you’re perfect just the way you are 💛✨`;
 
 let messageTyped = false;
 

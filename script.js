@@ -84,8 +84,8 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
 // ========== 5. TYPING ANIMATION (Message Section) ==========
 const birthdayMessage = `Happy Birthday Chanchal! 🎉🎂💖 \n
 
-On your special day, I just want to remind you how truly amazing you are and how lucky I feel to have you as my best friend. You bring so much happiness, laughter, and positivity into my life, and I honestly can’t imagine my life without you ✨😊 \n
-Thank you for always being there for me, for understanding me like no one else, and for making every moment we share so special 💕🌸 You deserve all the love, success, and happiness in the world today and always 🌟💫 \n
+On your special day, I just want to remind you how truly amazing you are and how lucky I feel to have you as my friend. You bring so much happiness, laughter, and positivity into my life✨😊 \n
+Thank you for always being there for me, for understanding me like no one else 💕🌸 You deserve all the love, success, and happiness in the world today and always 🌟💫 \n
 May this year bring you closer to your dreams and fill your life with beautiful memories 🥳🌈 Keep shining, keep smiling, and never change—you’re perfect just the way you are 💛✨`;
 
 let messageTyped = false;
@@ -127,19 +127,21 @@ messageObserver.observe(messageSection);
 
 // ========== 6. FAKE CHAT MESSAGES ==========
 const chatMessages = [
-  { sender: 'me', text: 'Hey Chanchal! 🎉', time: '10:00 AM' },
-  { sender: 'other', text: 'Hiii! 😄', time: '10:01 AM' },
-  { sender: 'me', text: 'Guess what day it is? 🤔', time: '10:01 AM' },
-  { sender: 'other', text: 'Hmmm… Tuesday? 😂', time: '10:02 AM' },
-  { sender: 'me', text: "Noo silly! It's YOUR BIRTHDAY! 🎂🎈🎊", time: '10:02 AM' },
-  { sender: 'other', text: 'OMG yesss!! I almost forgot!! 🤣🎉', time: '10:03 AM' },
-  { sender: 'me', text: 'How could you forget YOUR OWN birthday 😂', time: '10:03 AM' },
-  { sender: 'other', text: "Haha I was too busy being awesome 😎💅", time: '10:04 AM' },
-  { sender: 'me', text: "That's actually true not gonna lie 😤💖", time: '10:04 AM' },
-  { sender: 'me', text: 'I made something special for you… keep scrolling! 🎁✨', time: '10:05 AM' },
-  { sender: 'other', text: "Awww you're the best!! 🥺💕", time: '10:05 AM' },
+  { sender: 'me', text: 'Helloooo birthday girl!! 🎉🎂💖', time: '09:58 AM' },
+  { sender: 'other', text: 'Hehe hiiii 😄', time: '09:59 AM' },
+  { sender: 'me', text: 'Why do you sound extra happy today? 🤨✨', time: '09:59 AM' },
+  { sender: 'other', text: 'I wonder whyyy 😏', time: '10:00 AM' },
+  { sender: 'me', text: 'Wait… is it because someone turned older today? 👀🎂', time: '10:00 AM' },
+  { sender: 'other', text: 'OLDER?? EXCUSE ME 😤😂', time: '10:01 AM' },
+  { sender: 'me', text: 'Okay okay… wiser, prettier, cooler 😌💅', time: '10:01 AM' },
+  { sender: 'other', text: 'Now that sounds better 😌💖', time: '10:02 AM' },
+  { sender: 'me', text: 'Happy Birthday Chanchal!! 🎉🎈 You deserve EVERYTHING amazing today 💕', time: '10:02 AM' },
+  { sender: 'other', text: 'Awww thank youuu 🥺❤️', time: '10:03 AM' },
+  { sender: 'me', text: 'Seriously, life is just better with you in it ✨', time: '10:03 AM' },
+  { sender: 'other', text: 'Stoppp you’re gonna make me emotional 😭💞', time: '10:04 AM' },
+  { sender: 'me', text: 'Good 😌 because I have more… keep scrolling 👇🎁', time: '10:04 AM' },
+  { sender: 'other', text: 'OMG what did you dooo 😭💕', time: '10:05 AM' }
 ];
-
 let chatStarted = false;
 
 function showTypingIndicator() {

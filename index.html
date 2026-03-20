@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Chanchal 🎂</title>
+  <meta name="description"
+    content="A special birthday surprise for Chanchal – filled with love, fun, and celebration!" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@400;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ==================== LOADER ==================== -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="cake-icon">🎂</div>
+      <p class="loader-text">Preparing a surprise…</p>
+      <div class="loader-bar">
+        <div class="loader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="navbar" class="navbar">
+    <a href="#home" class="nav-logo">🎂</a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-menu" class="nav-menu">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#message" class="nav-link">Message</a></li>
+      <li><a href="#chat" class="nav-link">Chat</a></li>
+      <li><a href="#compliments" class="nav-link">Compliments</a></li>
+      <li><a href="#surprise" class="nav-link">Surprise</a></li>
+    </ul>
+  </nav>
+
+  <!-- ==================== 1. HOME SECTION ==================== -->
+  <section id="home" class="section section-home">
+    <div class="floating-emojis" aria-hidden="true">
+      <span class="float-emoji" style="--i:0">🎈</span>
+      <span class="float-emoji" style="--i:1">🎁</span>
+      <span class="float-emoji" style="--i:2">✨</span>
+      <span class="float-emoji" style="--i:3">🎉</span>
+      <span class="float-emoji" style="--i:4">💖</span>
+      <span class="float-emoji" style="--i:5">🌟</span>
+      <span class="float-emoji" style="--i:6">🎊</span>
+      <span class="float-emoji" style="--i:7">🧁</span>
+    </div>
+    <div class="home-content">
+      <p class="home-subtitle animate-on-scroll">🎉 It's a Special Day! 🎉</p>
+      <h1 class="home-title animate-on-scroll">
+        Happy Birthday<br /><span class="highlight-name">Chanchal</span>
+      </h1>
+      <p class="home-tagline animate-on-scroll">Wishing you a year filled with love, joy & all the happiness in the
+        world 💛</p>
+      <a href="#message" id="start-btn" class="btn btn-primary animate-on-scroll">
+        🎁 Start the Surprise
+      </a>
+    </div>
+  </section>
+
+  <!-- ==================== 2. MESSAGE SECTION ==================== -->
+  <section id="message" class="section section-message">
+    <div class="container">
+      <h2 class="section-heading animate-on-scroll">A Little Note for You 💌</h2>
+      <div class="message-card animate-on-scroll">
+        <div class="message-envelope">💌</div>
+        <p id="typed-message" class="typed-message"></p>
+        <span id="typing-cursor" class="typing-cursor">|</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. FAKE CHAT SECTION ==================== -->
+  <section id="chat" class="section section-chat">
+    <div class="container">
+      <h2 class="section-heading animate-on-scroll">Our Little Chat 💬</h2>
+      <div class="phone-frame animate-on-scroll">
+        <div class="phone-header">
+          <div class="phone-avatar">C</div>
+          <div class="phone-info">
+            <span class="phone-name">Chanchal ❤️</span>
+            <span class="phone-status" id="chat-status">online</span>
+          </div>
+        </div>
+        <div class="chat-body" id="chat-body">
+          <!-- Messages will be injected by JS -->
+        </div>
+        <div class="chat-input-bar">
+          <span class="chat-input-placeholder">Type a message…</span>
+          <span class="chat-send-icon">➤</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. COMPLIMENT GENERATOR SECTION ==================== -->
+  <section id="compliments" class="section section-compliments">
+    <div class="container">
+      <h2 class="section-heading animate-on-scroll">Why You're Amazing ✨</h2>
+      <div class="compliment-card animate-on-scroll">
+        <p id="compliment-text" class="compliment-text">Click the button to find out! 💫</p>
+      </div>
+      <button id="compliment-btn" class="btn btn-compliment animate-on-scroll">
+        💖 Click to see why you're amazing
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== 5. SURPRISE SECTION ==================== -->
+  <section id="surprise" class="section section-surprise">
+    <div class="container">
+      <h2 class="section-heading animate-on-scroll">The Grand Finale 🎆</h2>
+      <p class="surprise-sub animate-on-scroll">Ready for your surprise, Chanchal?</p>
+      <button id="surprise-btn" class="btn btn-surprise animate-on-scroll">
+        🎉 Unleash the Celebration!
+      </button>
+      <div id="music-controls" class="music-controls hidden">
+        <button id="music-toggle" class="btn btn-music">🎵 Pause Music</button>
+      </div>
+      <canvas id="confetti-canvas"></canvas>
+      <div class="surprise-message hidden" id="surprise-message">
+        <h3>🎂 Happy Birthday Chanchal! 🎂</h3>
+        <p>May all your dreams come true. You deserve the world! 🌍💖</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <p>Made with 💖 for <strong>Chanchal</strong></p>
+  </footer>
+
+  <!-- Birthday Music (royalty-free short clip – base64 inline or external link) -->
+  <audio id="birthday-audio" loop preload="auto">
+    <source src="https://pixabay.com/music/funk-birthday-happy-birthday-503371/" type="audio/mpeg" />
+  </audio>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>

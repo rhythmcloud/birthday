@@ -425,3 +425,155 @@ window.addEventListener('scroll', () => {
     navbar.style.background = 'rgba(255, 255, 255, 0.75)';
   }
 });
+
+// ========== 13. SECRET CLICK REVEAL – "WHY YOU" POPUP ==========
+(function () {
+  const whyOverlay = document.getElementById('why-you-overlay');
+  const whyCloseBtn = document.getElementById('why-you-close');
+  const sparkleCanvas = document.getElementById('sparkle-canvas');
+  const sparkleCtx = sparkleCanvas.getContext('2d');
+
+  let whyYouRevealed = false;
+  let secretClickCount = 0;
+  const CLICK_THRESHOLD = 5;
+
+  // ---------- Sparkle Particle System ----------
+  let sparkles = [];
+  let sparkleAnimating = false;
+
+  function resizeSparkleCanvas() {
+    sparkleCanvas.width = window.innerWidth;
+    sparkleCanvas.height = window.innerHeight;
+  }
+
+  class Sparkle {
+    constructor() {
+      this.x = Math.random() * sparkleCanvas.width;
+      this.y = Math.random() * sparkleCanvas.height;
+      this.size = Math.random() * 4 + 1.5;
+      this.speedX = (Math.random() - 0.5) * 3;
+      this.speedY = (Math.random() - 0.5) * 3;
+      this.opacity = 1;
+      this.decay = Math.random() * 0.015 + 0.005;
+      this.color = [
+        '#ff6b9d', '#c44dff', '#ffb347', '#ffd54f',
+        '#ff4081', '#e040fb', '#ffffff', '#f8bbd0'
+      ][Math.floor(Math.random() * 8)];
+      this.rotation = Math.random() * 360;
+      this.rotSpeed = (Math.random() - 0.5) * 8;
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.rotation += this.rotSpeed;
+      this.opacity -= this.decay;
+      this.size *= 0.998;
+    }
+
+    draw() {
+      sparkleCtx.save();
+      sparkleCtx.globalAlpha = Math.max(this.opacity, 0);
+      sparkleCtx.translate(this.x, this.y);
+      sparkleCtx.rotate((this.rotation * Math.PI) / 180);
+      sparkleCtx.fillStyle = this.color;
+
+      // Draw a 4-point star
+      sparkleCtx.beginPath();
+      for (let i = 0; i < 4; i++) {
+        const angle = (i * Math.PI) / 2;
+        const outerX = Math.cos(angle) * this.size;
+        const outerY = Math.sin(angle) * this.size;
+        const innerAngle = angle + Math.PI / 4;
+        const innerX = Math.cos(innerAngle) * (this.size * 0.35);
+        const innerY = Math.sin(innerAngle) * (this.size * 0.35);
+        if (i === 0) {
+          sparkleCtx.moveTo(outerX, outerY);
+        } else {
+          sparkleCtx.lineTo(outerX, outerY);
+        }
+        sparkleCtx.lineTo(innerX, innerY);
+      }
+      sparkleCtx.closePath();
+      sparkleCtx.fill();
+      sparkleCtx.restore();
+    }
+  }
+
+  function burstSparkles() {
+    resizeSparkleCanvas();
+    sparkles = [];
+    sparkleAnimating = true;
+
+    // Create initial burst
+    for (let i = 0; i < 120; i++) {
+      sparkles.push(new Sparkle());
+    }
+
+    animateSparkles();
+
+    // Stop adding new sparkles after 4s
+    setTimeout(() => { sparkleAnimating = false; }, 4000);
+  }
+
+  function animateSparkles() {
+    if (!sparkleAnimating && sparkles.every(s => s.opacity <= 0)) {
+      sparkleCtx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
+      return;
+    }
+
+    sparkleCtx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
+
+    sparkles.forEach(s => {
+      s.update();
+      s.draw();
+    });
+
+    sparkles = sparkles.filter(s => s.opacity > 0);
+
+    // Keep adding sparkles while animating
+    if (sparkleAnimating && Math.random() > 0.5) {
+      sparkles.push(new Sparkle());
+    }
+
+    requestAnimationFrame(animateSparkles);
+  }
+
+  // ---------- Show / Hide Popup ----------
+  function showWhyYou() {
+    if (whyYouRevealed) return;
+    whyYouRevealed = true;
+
+    whyOverlay.classList.add('active');
+    burstSparkles();
+
+    // Hide the teaser
+    const teaser = document.getElementById('secret-teaser');
+    if (teaser) teaser.style.display = 'none';
+  }
+
+  function hideWhyYou() {
+    whyOverlay.classList.remove('active');
+    sparkleAnimating = false;
+  }
+
+  whyCloseBtn.addEventListener('click', hideWhyYou);
+
+  // Close on overlay click (outside card)
+  whyOverlay.addEventListener('click', (e) => {
+    if (e.target === whyOverlay) hideWhyYou();
+  });
+
+  // ---------- Trigger 1: Click Counter ----------
+  document.addEventListener('click', (e) => {
+    // Don't count clicks on interactive elements like buttons, links, nav
+    if (e.target.closest('button, a, .nav-menu, .why-you-overlay')) return;
+    secretClickCount++;
+    if (secretClickCount >= CLICK_THRESHOLD) {
+      showWhyYou();
+    }
+  });
+
+  // Handle resize for sparkle canvas
+  window.addEventListener('resize', resizeSparkleCanvas);
+})();
